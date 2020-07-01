@@ -154,11 +154,21 @@ local function move_bot(pos,direction)
     end
     if ppos then
         local factor = 1.1
+        local elevator_debug_message = "DEBUG elevator grab " .. (
+            ppos.x-pos.x
+        ) .. " " .. (
+            ppos.z-pos.z
+        ) .. " " .. (
+            ppos.y-pos.y
+        ) .. " " .. ppos.y .. " " .. pos.y .. " "
         if math.abs(ppos.x-pos.x)<(1.1*factor) and
                 math.abs(ppos.z-pos.z)<(1.1*factor) and
                 math.abs(ppos.y-pos.y)<(2*factor) and
                 ppos.y>pos.y then
             player:setpos({x=newpos.x, y=newpos.y+1.1, z=newpos.z })
+            elevator_debug_message = elevator_debug_message .. "hit"
+        else
+            elevator_debug_message = elevator_debug_message .. "miss"
         end
     end
 end
