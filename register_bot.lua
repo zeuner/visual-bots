@@ -153,9 +153,10 @@ local function move_bot(pos,direction)
         position_bot(pos,newpos)
     end
     if ppos then
-        if math.abs(ppos.x-pos.x)<1.1 and
-                math.abs(ppos.z-pos.z)<1.1 and
-                math.abs(ppos.y-pos.y)<2 and
+        local factor = 1.1
+        if math.abs(ppos.x-pos.x)<(1.1*factor) and
+                math.abs(ppos.z-pos.z)<(1.1*factor) and
+                math.abs(ppos.y-pos.y)<(2*factor) and
                 ppos.y>pos.y then
             player:setpos({x=newpos.x, y=newpos.y+1.1, z=newpos.z })
         end
